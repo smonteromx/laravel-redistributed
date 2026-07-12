@@ -1,0 +1,40 @@
+{
+    "$schema": "https://ui.shadcn.com/schema/registry.json",
+    "name": "laravel-redistributed",
+    "homepage": "https://github.com/smonteromx/laravel-redistributed",
+    "items": [
+        {
+            "name": "guidelines",
+            "type": "registry:item",
+            "title": "Laravel AI Guidelines",
+            "description": "Laravel Boost AI guidelines covering project architecture, backend and frontend conventions, testing, and quality pipelines for Laravel + Inertia + React applications.",
+            "files": [
+                {
+                    "path": "registry/guidelines/project-architecture.md",
+                    "type": "registry:file",
+                    "target": "~/.ai/guidelines/project-architecture.md"
+                },
+                {
+                    "path": "registry/guidelines/backend-conventions.md",
+                    "type": "registry:file",
+                    "target": "~/.ai/guidelines/backend-conventions.md"
+                },
+                {
+                    "path": "registry/guidelines/frontend-conventions.md",
+                    "type": "registry:file",
+                    "target": "~/.ai/guidelines/frontend-conventions.md"
+                },
+                {
+                    "path": "registry/guidelines/testing.md",
+                    "type": "registry:file",
+                    "target": "~/.ai/guidelines/testing.md"
+                },
+                {
+                    "path": "registry/guidelines/quality.md",
+                    "type": "registry:file",
+                    "target": "~/.ai/guidelines/quality.md"
+                }
+            ]
+        }
+    ]
+}
