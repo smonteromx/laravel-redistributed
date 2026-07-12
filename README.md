@@ -9,7 +9,7 @@ This repository is the registry itself — items install directly from GitHub wi
 Install an item into your Laravel project:
 
 ```bash
-npx shadcn@latest add smonteromx/laravel-redistributed/<item>
+pnpm dlx shadcn@latest add smonteromx/laravel-redistributed/<item>
 ```
 
 ## Items
@@ -21,7 +21,7 @@ npx shadcn@latest add smonteromx/laravel-redistributed/<item>
 ### guidelines
 
 ```bash
-npx shadcn@latest add smonteromx/laravel-redistributed/guidelines
+pnpm dlx shadcn@latest add smonteromx/laravel-redistributed/guidelines
 ```
 
 The guidelines are [Laravel Boost](https://github.com/laravel/boost) sources. After installing, regenerate your agent context files:
