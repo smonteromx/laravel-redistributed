@@ -35,6 +35,34 @@
                     "target": "~/.ai/guidelines/quality.md"
                 }
             ]
+        },
+        {
+            "name": "feedback-inertia",
+            "type": "registry:item",
+            "title": "Backend Feedback (Inertia)",
+            "description": "Backend flash feedback for Inertia apps: the Inertia::notify() macro, FlashResponse and EmphasisVariant enums, and AppException for expected domain failures that flash feedback and redirect back.",
+            "files": [
+                {
+                    "path": "registry/laravel/feedback-inertia/app/Enums/FlashResponse.php",
+                    "type": "registry:file",
+                    "target": "~/app/Enums/FlashResponse.php"
+                },
+                {
+                    "path": "registry/laravel/feedback-inertia/app/Enums/EmphasisVariant.php",
+                    "type": "registry:file",
+                    "target": "~/app/Enums/EmphasisVariant.php"
+                },
+                {
+                    "path": "registry/laravel/feedback-inertia/app/Exceptions/AppException.php",
+                    "type": "registry:file",
+                    "target": "~/app/Exceptions/AppException.php"
+                },
+                {
+                    "path": "registry/laravel/feedback-inertia/app/Macros/InertiaNotifyMacro.php",
+                    "type": "registry:file",
+                    "target": "~/app/Macros/InertiaNotifyMacro.php"
+                }
+            ]
         }
     ]
 }
