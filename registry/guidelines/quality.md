@@ -11,23 +11,24 @@ composer run quality
 ```
 
 This is the command that actually formats and fixes both the frontend and backend. It mutates files as needed and runs:
-- `pnpm run format`
-- `pnpm run lint`
-- `pint --parallel app/`
-- `phpstan analyse app/ --memory-limit=4G`
+- `pnpm run lint` (`eslint . --fix`)
+- `pnpm run format` (`prettier --write resources/`)
+- `pnpm run types:check` (`tsc --noEmit`)
+- `pint --parallel`
+- `phpstan analyse --memory-limit=4G`
 
 Full quality check pipeline:
 
 ```bash
-composer run test:quality
+composer run quality:check
 ```
 
 This is the CI-safe, non-mutating quality gate. It is run by `composer run test` and runs:
-- `pnpm run format:check`
-- `pnpm run types`
-- `pnpm exec eslint .`
-- `pint --parallel app/ --test`
-- `phpstan analyse app/ --memory-limit=4G`
+- `pnpm run lint:check` (`eslint .`)
+- `pnpm run format:check` (`prettier --check resources/`)
+- `pnpm run types:check` (`tsc --noEmit`)
+- `pint --parallel --test`
+- `phpstan analyse --memory-limit=4G`
 
 Testing pipeline:
 
@@ -35,7 +36,7 @@ Testing pipeline:
 composer run test
 ```
 
-This clears config, runs `composer run test:quality`, and runs `php artisan test`.
+This clears config, runs `composer run quality:check`, and runs `php artisan test`.
 
 PHP formatting only:
 
