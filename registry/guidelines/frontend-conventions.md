@@ -73,7 +73,7 @@ export const exampleStatusDecoration: Record<ExampleStatus, Pick<Decoration, 'la
 };
 ```
 
-`App\Enums\EmphasisVariant` is the semantic color enum used by feedback and emphasis UI, mirrored on the frontend at `resources/js/enums/emphasis-variant.ts`. Keep its CSS tokens in `resources/css/app.css` as `--{variant}`, `--{variant}-foreground`, `--{variant}-subtle`, and `--{variant}-text`.
+`App\Enums\EmphasisVariant` is the semantic color enum used by feedback and emphasis UI, mirrored on the frontend at `resources/js/enums/emphasis-variant.ts`. Keep its CSS tokens in `resources/css/app.css` as `--{variant}`, `--{variant}-foreground`, `--{variant}-accent`, and `--{variant}-accent-foreground`, following shadcn semantics: base for backgrounds, foreground for text on base, accent for subtle backgrounds, and accent-foreground for text on subtle backgrounds. Define values in `oklch`, as shadcn's default `destructive` does.
 
 ## Forms
 
