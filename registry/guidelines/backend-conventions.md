@@ -4,7 +4,16 @@ Project-specific Laravel backend rules. These intentionally override or tighten 
 
 All class names below are sample placeholders (`Example*`); replace them with the feature's real domain names.
 
-These conventions reference project-provided defaults such as the `Inertia::notify` macro, `AppException`, `FlashResponse`, and `EmphasisVariant`. If any referenced default is missing from the project, ask the user how to proceed instead of reimplementing it — they will usually point you to the correct current version.
+These conventions reference project-provided defaults such as the `Inertia::notify` macro, `AppException`, `FlashResponse`, and `EmphasisVariant`. These defaults are distributed as items of the `smonteromx/laravel-redistributed` shadcn registry. If a referenced default is missing from the project, install its item (confirm with the user first) instead of reimplementing it:
+
+```bash
+pnpm dlx shadcn@latest add smonteromx/laravel-redistributed/{item}
+```
+
+| Missing default | Registry item |
+| --- | --- |
+| `Inertia::notify` macro, `AppException`, `FlashResponse`, `EmphasisVariant` | `feedback-inertia` |
+| `HandleAppearance` middleware | `appearance-react` |
 
 ## Controllers
 

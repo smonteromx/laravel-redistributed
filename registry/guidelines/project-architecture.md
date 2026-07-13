@@ -9,6 +9,7 @@ This project uses PostgreSQL named schemas as domain boundaries instead of relyi
 Rules:
 - Keep all folder and database structure examples placeholder-based; do not introduce concrete domain, subdomain, schema, or table names in project guidance.
 - Create a schema migration when adding a new domain schema, following `0000_00_00_000000_create_initial_schemas.php`.
+- If the initial schemas migration is missing, or Laravel's default tables are not yet configured into named schemas, run the `laravel-postgres-schemas` skill; it is distributed from the `smonteromx/laravel-redistributed` registry and installable with `pnpm dlx skills add smonteromx/laravel-redistributed`.
 - Every domain model must explicitly declare a schema-qualified table name: `protected $table = '{domain}.{table}';`.
 - Migrations must use schema-qualified table names: `Schema::create('{domain}.{table}', ...)`.
 - Treat the PostgreSQL schema as the domain and table as the subdomain.

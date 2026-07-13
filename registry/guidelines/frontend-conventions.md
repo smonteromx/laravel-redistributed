@@ -4,7 +4,19 @@ Project-specific frontend rules for Inertia, React, shadcn/ui, Tailwind, and the
 
 All names below prefixed with `Example` are sample placeholders; replace them with the feature's real domain names.
 
-These conventions reference project-provided defaults such as `useFlashToast`, `useAppearance`, `useDecorator`, `EmphasisVariant` / `emphasis-variant`, `<Toaster />`, and `<FlashAlert />`. If any referenced default is missing from the project, ask the user how to proceed instead of reimplementing it — they will usually point you to the correct current version.
+These conventions reference project-provided defaults such as `useFlashToast`, `useAppearance`, `useDecorator`, `EmphasisVariant` / `emphasis-variant`, `<Toaster />`, `<FlashAlert />`, and `<IconRenderer />`. These defaults are distributed as items of the `smonteromx/laravel-redistributed` shadcn registry. If a referenced default is missing from the project, install its item (confirm with the user first) instead of reimplementing it:
+
+```bash
+pnpm dlx shadcn@latest add smonteromx/laravel-redistributed/{item}
+```
+
+| Missing default | Registry item |
+| --- | --- |
+| `<FlashAlert />`, `useFlashToast`, `FlashResponse` type, `EmphasisVariant` mirror and decoration | `feedback-react` |
+| `useAppearance`, `HandleAppearance` | `appearance-react` |
+| `Decoration` type, `useDecorator` | `decorator-react` |
+| `<IconRenderer />` | `icon-renderer-react` |
+| Emphasis CSS tokens (`--{variant}`, `-foreground`, `-accent`, `-accent-foreground`) | `emphasis-css` |
 
 ## Inertia Feedback
 
@@ -75,6 +87,21 @@ export const ExampleStatusDecoration: Record<ExampleStatus, Pick<Decoration, 'la
 ```
 
 `App\Enums\EmphasisVariant` is the semantic color enum used by feedback and emphasis UI, mirrored on the frontend at `resources/js/enums/emphasis-variant.ts`. Keep its CSS tokens in `resources/css/app.css` as `--{variant}`, `--{variant}-foreground`, `--{variant}-accent`, and `--{variant}-accent-foreground`, following shadcn semantics: base for backgrounds, foreground for text on base, accent for subtle backgrounds, and accent-foreground for text on subtle backgrounds. Define values in `oklch`, as shadcn's default `destructive` does.
+
+## Icon Rendering
+
+Icons that arrive as data — from decorations, hooks, props, or models — are rendered with `<IconRenderer />` instead of being aliased to a local component variable.
+
+Rules:
+- Use `<IconRenderer iconNode={icon} />` whenever the icon is a component reference coming from data, such as `useDecorator()` results.
+- Avoid the `const Icon = decoration.icon` (or destructure-rename `icon: Icon`) pattern; it adds noise and collides with icon-library exports named `Icon`.
+- `<IconRenderer />` lives at `resources/js/components/ux/typography/icon-renderer.tsx`, forwards `className` and aria attributes, and renders nothing when the reference is empty.
+
+```tsx
+const decorator = useDecorator(ExampleStatusDecoration, status);
+
+return <IconRenderer iconNode={decorator.icon} className="size-4" />;
+```
 
 ## Forms
 
