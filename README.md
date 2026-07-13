@@ -32,6 +32,7 @@ Inside each item folder, files mirror their install path in the consuming projec
 | --- | --- | --- | --- |
 | `guidelines` | Cross-stack | Laravel Boost AI guidelines: project architecture, backend and frontend conventions, testing, and quality pipelines. | `.ai/guidelines/` |
 | `feedback-inertia` | Laravel (Inertia) | Backend flash feedback: `Inertia::notify()` macro, `FlashResponse` and `EmphasisVariant` enums, and `AppException`. | `app/` |
+| `appearance-react` | Laravel + React | Light/dark/system theme handling: `HandleAppearance` middleware and the `useAppearance` hook. | `app/`, `resources/js/` |
 
 ### guidelines
 
@@ -70,6 +71,32 @@ public function boot(): void
 ```
 
 The frontend counterparts (toaster, callout, transient listener) ship as separate per-technology items.
+
+### appearance-react
+
+```bash
+pnpm dlx shadcn@latest add smonteromx/laravel-redistributed/appearance-react
+```
+
+Light, dark, and system theme handling across the stack:
+
+- `App\Http\Middleware\HandleAppearance` — shares the `appearance` cookie with views server-side, so the initial render matches the user's theme.
+- `useAppearance()` (`resources/js/hooks/use-appearance.ts`) — React hook exposing `appearance`, `resolvedAppearance`, and `updateAppearance()`; persists to `localStorage` and cookie, applies the `dark` class, and reacts to system theme changes. Also exports `initializeTheme()` to apply the stored theme at app boot.
+- `Appearance` / `ResolvedAppearance` types (`resources/js/types/ui/appearance.ts`).
+
+After installing, register the middleware yourself in `bootstrap/app.php`, inside the `web` group of `withMiddleware()`:
+
+```php
+use App\Http\Middleware\HandleAppearance;
+
+->withMiddleware(function (Middleware $middleware): void {
+    $middleware->web(append: [
+        HandleAppearance::class,
+        HandleInertiaRequests::class,
+        AddLinkHeadersForPreloadedAssets::class,
+    ]);
+})
+```
 
 ## Requirements
 

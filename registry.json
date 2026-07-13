@@ -63,6 +63,29 @@
                     "target": "~/app/Macros/InertiaNotifyMacro.php"
                 }
             ]
+        },
+        {
+            "name": "appearance-react",
+            "type": "registry:item",
+            "title": "Appearance (React)",
+            "description": "Light, dark, and system theme handling: the HandleAppearance middleware shares the appearance cookie server-side, and the useAppearance hook persists the theme to localStorage and cookie and applies it client-side.",
+            "files": [
+                {
+                    "path": "registry/laravel/appearance/app/Http/Middleware/HandleAppearance.php",
+                    "type": "registry:file",
+                    "target": "~/app/Http/Middleware/HandleAppearance.php"
+                },
+                {
+                    "path": "registry/react/appearance/resources/js/hooks/use-appearance.ts",
+                    "type": "registry:file",
+                    "target": "~/resources/js/hooks/use-appearance.ts"
+                },
+                {
+                    "path": "registry/react/appearance/resources/js/types/ui/appearance.ts",
+                    "type": "registry:file",
+                    "target": "~/resources/js/types/ui/appearance.ts"
+                }
+            ]
         }
     ]
 }
