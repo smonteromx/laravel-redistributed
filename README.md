@@ -105,6 +105,18 @@ use App\Http\Middleware\HandleAppearance;
 })
 ```
 
+Then initialize the theme once in your app entry (`resources/js/app.tsx`), after `createInertiaApp`:
+
+```tsx
+import { initializeTheme } from '@/hooks/use-appearance';
+
+createInertiaApp({
+    // ...
+});
+
+initializeTheme();
+```
+
 ### feedback-react
 
 ```bash
