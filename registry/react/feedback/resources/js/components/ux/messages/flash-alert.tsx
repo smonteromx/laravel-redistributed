@@ -2,7 +2,7 @@ import { usePage } from '@inertiajs/react';
 import type { ComponentProps } from 'react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { IconRenderer } from '@/components/ux/typography/icon-renderer';
-import { EmphasisVariantDecoration } from '@/decorations/emphasis-variant-decoration';
+import { EmphasisVariantDecoration } from '../../../decorations/emphasis-variant-decoration';
 import { useDecorator } from '@/hooks/use-decorator';
 
 function FlashAlert({ ...props }: ComponentProps<'div'>) {

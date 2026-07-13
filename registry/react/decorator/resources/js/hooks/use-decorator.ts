@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import type { Decoration } from '@/types/ui/decoration';
+import type { Decoration } from '../types/ui/decoration';
 
 export function useDecorator<
     TValue extends string,

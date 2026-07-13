@@ -2,8 +2,8 @@ import { router } from '@inertiajs/react';
 import type { CSSProperties } from 'react';
 import { useEffect } from 'react';
 import { toast } from 'sonner';
-import type { EmphasisVariant, EmphasisVariantAlternative } from '@/enums/emphasis-variant';
-import type { FlashResponse } from '@/types/data/flash-response';
+import type { EmphasisVariant, EmphasisVariantAlternative } from '../enums/emphasis-variant';
+import type { FlashResponse } from '../types/data/flash-response';
 
 export function useFlashToast(): void {
     useEffect(() => {

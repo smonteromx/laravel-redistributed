@@ -1,5 +1,5 @@
 import { useSyncExternalStore } from 'react';
-import type { Appearance, ResolvedAppearance } from '@/types/ui/appearance';
+import type { Appearance, ResolvedAppearance } from '../types/ui/appearance';
 
 export type UseAppearanceReturn = {
     readonly appearance: Appearance;

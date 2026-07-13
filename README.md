@@ -26,6 +26,8 @@ registry/
 
 Inside each item folder, files mirror their install path in the consuming project.
 
+> **Maintenance note:** distributed `.ts`/`.tsx` files must use **relative imports** for anything outside the shadcn alias slots (`components`, `ui`, `hooks`, `lib`, `utils`) — for example `types/`, `enums/`, and `decorations/`. The shadcn CLI rewrites alias imports between installed files assuming `@/` maps to the project root, which corrupts Laravel-style aliases (`@/*` → `./resources/js/*`). Relative imports are left untouched; imports into the alias slots are rewritten correctly and may stay aliased.
+
 ## Items
 
 | Item | Stack | Description | Installs to |

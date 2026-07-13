@@ -1,4 +1,4 @@
-import type { EmphasisVariant } from '@/enums/emphasis-variant';
+import type { EmphasisVariant } from '../../enums/emphasis-variant';
 
 export type FlashResponse = {
     variant: EmphasisVariant;
