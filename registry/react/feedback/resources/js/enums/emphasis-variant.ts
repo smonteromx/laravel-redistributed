@@ -6,8 +6,6 @@ export const EmphasisVariants = {
     INTERROGATIVE: 'interrogative',
 } as const;
 
-export type EmphasisVariant =
-    (typeof EmphasisVariants)[keyof typeof EmphasisVariants];
+export type EmphasisVariant = (typeof EmphasisVariants)[keyof typeof EmphasisVariants];
 
-export type EmphasisVariantAlternative =
-    'success' | 'info' | 'warning' | 'error' | 'message';
+export type EmphasisVariantAlternative = 'success' | 'info' | 'warning' | 'error' | 'message';

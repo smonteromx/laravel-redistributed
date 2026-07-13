@@ -6,11 +6,7 @@ type IconProps = {
     className?: string;
 } & AriaAttributes;
 
-function IconRenderer({
-    iconNode: IconComponent,
-    className,
-    ...props
-}: IconProps) {
+function IconRenderer({ iconNode: IconComponent, className, ...props }: IconProps) {
     if (!IconComponent) {
         return null;
     }
