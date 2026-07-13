@@ -13,7 +13,7 @@ use function back;
 
 class AppException extends Exception
 {
-    public function __construct(string $message, protected FlashResponse $style = FlashResponse::CALLOUT, protected EmphasisVariant $variant = EmphasisVariant::AFFIRMATIVE)
+    public function __construct(string $message, protected FlashResponse $style = FlashResponse::ALERT, protected EmphasisVariant $variant = EmphasisVariant::AFFIRMATIVE)
     {
         parent::__construct($message, 400);
     }

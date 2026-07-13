@@ -4,6 +4,6 @@ namespace App\Enums;
 
 enum FlashResponse: string
 {
-    case CALLOUT = 'alert';
-    case TRANSIENT = 'toast';
+    case ALERT = 'alert';
+    case TOAST = 'toast';
 }
