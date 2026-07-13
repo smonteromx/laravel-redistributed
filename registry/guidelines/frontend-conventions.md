@@ -4,7 +4,7 @@ Project-specific frontend rules for Inertia, React, shadcn/ui, Tailwind, and the
 
 All names below prefixed with `Example` are sample placeholders; replace them with the feature's real domain names.
 
-These conventions reference project-provided defaults such as `useTransientListener`, `useAppearance`, `useDecorator`, `EmphasisVariant` / `emphasis-variant`, `<Toaster />`, and `<ResponseCallout />`. If any referenced default is missing from the project, ask the user how to proceed instead of reimplementing it — they will usually point you to the correct current version.
+These conventions reference project-provided defaults such as `useFlashToast`, `useAppearance`, `useDecorator`, `EmphasisVariant` / `emphasis-variant`, `<Toaster />`, and `<FlashAlert />`. If any referenced default is missing from the project, ask the user how to proceed instead of reimplementing it — they will usually point you to the correct current version.
 
 ## Inertia Feedback
 
@@ -15,12 +15,12 @@ Inertia::notify(string $message, FlashResponse $style, EmphasisVariant $variant 
 ```
 
 Frontend receivers:
-- `<ResponseCallout />` renders persistent `flash.callout` messages.
-- `useTransientListener()` fires `flash.transient` toasts. Always call it inside a layout (a persistent layout), never in the app entry, so each scope's layout owns its listener.
-- `<Toaster />` is the sonner/shadcn toast provider, configured with emphasis-variant styling. Mount it exactly once in the app entry (`resources/js/app.tsx`), not in layouts.
-- Place `<ResponseCallout />` near the relevant form or action area, usually above the main form, and avoid stretching it across unrelated page or section width.
+- `<FlashAlert />` renders persistent `flash.alert` messages.
+- `useFlashToast()` fires `flash.toast` toasts through sonner. It is already called inside the `<Toaster />` component, so do not wire extra listeners in layouts or pages.
+- `<Toaster />` is the sonner/shadcn toast provider, configured with emphasis-variant styling via `useAppearance` and the emphasis CSS tokens. Mount it exactly once in the app entry (`resources/js/app.tsx`), not in layouts.
+- Place `<FlashAlert />` near the relevant form or action area, usually above the main form, and avoid stretching it across unrelated page or section width.
 
-Shared props and flash data are typed in `resources/js/types/global.d.ts`. Update this file when adding shared props or flash channels.
+Shared props are typed in `resources/js/types/global.d.ts`, and flash channels are typed there through the `flashDataType` key of the Inertia config module declaration, using the `FlashResponse` type from `resources/js/types/data/flash-response.ts`. Update this file when adding shared props or flash channels.
 
 ## Enums
 
@@ -30,14 +30,15 @@ Rules:
 - Enums live under `resources/js/enums/{domain}/{subdomain}/`, mirroring the backend enum domain and subdomain.
 - Cross-cutting enums that belong to no domain live at the enum root, mirroring the backend. `EmphasisVariant` is `resources/js/enums/emphasis-variant.ts`, not under a domain or a `frontend/` subfolder.
 - Each enum file exports a plural `const` object holding the keys and values, and a singular `type` that admits the const's values.
+- Const keys mirror the backend enum case names, so they keep the backend casing (such as `DRAFT` for a backend `DRAFT` case).
 - Use the `const` for runtime comparisons and object keys; use the `type` for props, parameters, and form state.
 
 ```ts
 // resources/js/enums/{domain}/{subdomain}/example-status.ts
 export const ExampleStatuses = {
-    Draft: 'draft',
-    Published: 'published',
-    Archived: 'archived',
+    DRAFT: 'draft',
+    PUBLISHED: 'published',
+    ARCHIVED: 'archived',
 } as const;
 
 export type ExampleStatus = (typeof ExampleStatuses)[keyof typeof ExampleStatuses];
@@ -66,10 +67,10 @@ import { ExampleStatuses, type ExampleStatus } from '@/enums/{domain}/{subdomain
 import type { Decoration } from '@/types/ui/decoration';
 
 // Pick only the metadata keys this decoration actually uses.
-export const exampleStatusDecoration: Record<ExampleStatus, Pick<Decoration, 'label'>> = {
-    [ExampleStatuses.Draft]: { label: 'Draft' },
-    [ExampleStatuses.Published]: { label: 'Published' },
-    [ExampleStatuses.Archived]: { label: 'Archived' },
+export const ExampleStatusDecoration: Record<ExampleStatus, Pick<Decoration, 'label'>> = {
+    [ExampleStatuses.DRAFT]: { label: 'Draft' },
+    [ExampleStatuses.PUBLISHED]: { label: 'Published' },
+    [ExampleStatuses.ARCHIVED]: { label: 'Archived' },
 };
 ```
 

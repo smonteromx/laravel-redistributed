@@ -37,7 +37,7 @@ class ExampleController extends Controller
     {
         $action->handle($request->toData());
 
-        Inertia::notify('Example created successfully.', FlashResponse::TRANSIENT);
+        Inertia::notify('Example created successfully.', FlashResponse::TOAST);
 
         return back();
     }
@@ -206,15 +206,15 @@ Rules:
 - Create specific domain exceptions under `App\Exceptions\{Domain}` (domain only, no subdomain) extending `AppException`.
 - Throw custom exceptions from Actions for expected business-rule failures.
 - Let `AppException` flash feedback via `Inertia::notify()` and redirect back.
-- Use `FlashResponse::CALLOUT` for persistent inline feedback.
-- Use `FlashResponse::TRANSIENT` for toast feedback.
+- Use `FlashResponse::ALERT` for persistent inline feedback.
+- Use `FlashResponse::TOAST` for transient toast feedback.
 
 ```php
 class ExampleRuleException extends AppException
 {
     public function __construct()
     {
-        parent::__construct('Example rule was violated.', FlashResponse::CALLOUT, EmphasisVariant::DESTRUCTIVE);
+        parent::__construct('Example rule was violated.', FlashResponse::ALERT, EmphasisVariant::DESTRUCTIVE);
     }
 }
 ```
