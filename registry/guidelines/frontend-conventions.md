@@ -18,6 +18,8 @@ pnpm dlx shadcn@latest add smonteromx/laravel-redistributed/{item}
 | `<IconRenderer />` | `icon-renderer-react` |
 | Emphasis CSS tokens (`--{variant}`, `-foreground`, `-accent`, `-accent-foreground`) | `emphasis-css` |
 
+Installing an item is not the whole job: several items require manual wiring afterwards, documented per item in the registry README (https://github.com/smonteromx/laravel-redistributed#readme). Follow the installed item's section there and complete every post-install step — the default is halfway implemented until its wiring is done. For example, `feedback-react` requires adapting `ui/sonner.tsx` and `ui/alert.tsx`, typing `flashDataType` in `global.d.ts`, and mounting `<Toaster />` in the app entry.
+
 ## Inertia Feedback
 
 Backend flash feedback is sent with `Inertia::notify()`.

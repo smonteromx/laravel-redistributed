@@ -15,6 +15,8 @@ pnpm dlx shadcn@latest add smonteromx/laravel-redistributed/{item}
 | `Inertia::notify` macro, `AppException`, `FlashResponse`, `EmphasisVariant` | `feedback-inertia` |
 | `HandleAppearance` middleware | `appearance-react` |
 
+Installing an item is not the whole job: several items require manual wiring afterwards, documented per item in the registry README (https://github.com/smonteromx/laravel-redistributed#readme). Follow the installed item's section there and complete every post-install step — the default is halfway implemented until its wiring is done. For example, `feedback-inertia` requires declaring the macro in `AppServiceProvider::boot()`, and `appearance-react` requires registering the middleware in `bootstrap/app.php`.
+
 ## Controllers
 
 Controllers orchestrate only.
