@@ -86,6 +86,136 @@
                     "target": "~/resources/js/types/ui/appearance.ts"
                 }
             ]
+        },
+        {
+            "name": "emphasis-css",
+            "type": "registry:theme",
+            "title": "Emphasis CSS Variables",
+            "description": "Semantic emphasis color tokens for the EmphasisVariant system in oklch: base for backgrounds, foreground for text on base, accent for subtle backgrounds, and accent-foreground for text on subtle backgrounds, in light and dark modes.",
+            "cssVars": {
+                "light": {
+                    "affirmative": "oklch(0.627 0.194 149.214)",
+                    "affirmative-foreground": "oklch(0.985 0 0)",
+                    "affirmative-accent": "oklch(0.962 0.044 156.743)",
+                    "affirmative-accent-foreground": "oklch(0.527 0.154 150.069)",
+                    "informative": "oklch(0.546 0.245 262.881)",
+                    "informative-foreground": "oklch(0.985 0 0)",
+                    "informative-accent": "oklch(0.932 0.032 255.585)",
+                    "informative-accent-foreground": "oklch(0.488 0.243 264.376)",
+                    "preventive": "oklch(0.666 0.179 58.318)",
+                    "preventive-foreground": "oklch(0.985 0 0)",
+                    "preventive-accent": "oklch(0.962 0.059 95.617)",
+                    "preventive-accent-foreground": "oklch(0.555 0.163 48.998)",
+                    "destructive-foreground": "oklch(0.985 0 0)",
+                    "destructive-accent": "oklch(0.936 0.032 17.717)",
+                    "destructive-accent-foreground": "oklch(0.505 0.213 27.518)",
+                    "interrogative": "oklch(0.541 0.281 293.009)",
+                    "interrogative-foreground": "oklch(0.985 0 0)",
+                    "interrogative-accent": "oklch(0.943 0.029 294.588)",
+                    "interrogative-accent-foreground": "oklch(0.491 0.27 292.581)"
+                },
+                "dark": {
+                    "affirmative": "oklch(0.792 0.209 151.711)",
+                    "affirmative-foreground": "oklch(0.266 0.065 152.934)",
+                    "affirmative-accent": "oklch(0.266 0.065 152.934)",
+                    "affirmative-accent-foreground": "oklch(0.871 0.15 154.449)",
+                    "informative": "oklch(0.707 0.165 254.624)",
+                    "informative-foreground": "oklch(0.282 0.091 267.935)",
+                    "informative-accent": "oklch(0.282 0.091 267.935)",
+                    "informative-accent-foreground": "oklch(0.809 0.105 251.813)",
+                    "preventive": "oklch(0.828 0.189 84.429)",
+                    "preventive-foreground": "oklch(0.279 0.077 45.635)",
+                    "preventive-accent": "oklch(0.279 0.077 45.635)",
+                    "preventive-accent-foreground": "oklch(0.879 0.169 91.605)",
+                    "destructive-foreground": "oklch(0.258 0.092 26.042)",
+                    "destructive-accent": "oklch(0.258 0.092 26.042)",
+                    "destructive-accent-foreground": "oklch(0.808 0.114 19.571)",
+                    "interrogative": "oklch(0.702 0.183 293.541)",
+                    "interrogative-foreground": "oklch(0.283 0.141 291.089)",
+                    "interrogative-accent": "oklch(0.283 0.141 291.089)",
+                    "interrogative-accent-foreground": "oklch(0.811 0.111 293.571)"
+                }
+            }
+        },
+        {
+            "name": "decorator-react",
+            "type": "registry:item",
+            "title": "Decorator (React)",
+            "description": "Enum decoration pattern: the shared Decoration type and the useDecorator() hook to resolve UI metadata (labels, descriptions, emphasis, icons) from enum-keyed decoration records.",
+            "dependencies": ["lucide-react"],
+            "files": [
+                {
+                    "path": "registry/react/decorator/resources/js/types/ui/decoration.ts",
+                    "type": "registry:file",
+                    "target": "~/resources/js/types/ui/decoration.ts"
+                },
+                {
+                    "path": "registry/react/decorator/resources/js/hooks/use-decorator.ts",
+                    "type": "registry:file",
+                    "target": "~/resources/js/hooks/use-decorator.ts"
+                },
+                {
+                    "path": "registry/react/feedback/resources/js/enums/emphasis-variant.ts",
+                    "type": "registry:file",
+                    "target": "~/resources/js/enums/emphasis-variant.ts"
+                }
+            ]
+        },
+        {
+            "name": "icon-renderer-react",
+            "type": "registry:item",
+            "title": "Icon Renderer (React)",
+            "description": "IconRenderer component that renders a lucide icon component reference, useful when icons come from decoration records or other data.",
+            "dependencies": ["lucide-react"],
+            "files": [
+                {
+                    "path": "registry/react/icon-renderer/resources/js/components/ux/typography/icon-renderer.tsx",
+                    "type": "registry:file",
+                    "target": "~/resources/js/components/ux/typography/icon-renderer.tsx"
+                }
+            ]
+        },
+        {
+            "name": "feedback-react",
+            "type": "registry:item",
+            "title": "Frontend Feedback (React)",
+            "description": "Frontend half of the app feedback mechanism: EmphasisVariant enum mirror, FlashResponse type, emphasis decoration, useFlashToast() sonner listener, and the FlashAlert component. Pairs with the feedback-inertia backend item.",
+            "dependencies": ["lucide-react"],
+            "registryDependencies": [
+                "sonner",
+                "alert",
+                "smonteromx/laravel-redistributed/emphasis-css",
+                "smonteromx/laravel-redistributed/decorator-react",
+                "smonteromx/laravel-redistributed/icon-renderer-react",
+                "smonteromx/laravel-redistributed/appearance-react"
+            ],
+            "files": [
+                {
+                    "path": "registry/react/feedback/resources/js/enums/emphasis-variant.ts",
+                    "type": "registry:file",
+                    "target": "~/resources/js/enums/emphasis-variant.ts"
+                },
+                {
+                    "path": "registry/react/feedback/resources/js/types/data/flash-response.ts",
+                    "type": "registry:file",
+                    "target": "~/resources/js/types/data/flash-response.ts"
+                },
+                {
+                    "path": "registry/react/feedback/resources/js/decorations/emphasis-variant-decoration.ts",
+                    "type": "registry:file",
+                    "target": "~/resources/js/decorations/emphasis-variant-decoration.ts"
+                },
+                {
+                    "path": "registry/react/feedback/resources/js/hooks/use-flash-toast.ts",
+                    "type": "registry:file",
+                    "target": "~/resources/js/hooks/use-flash-toast.ts"
+                },
+                {
+                    "path": "registry/react/feedback/resources/js/components/ux/messages/flash-alert.tsx",
+                    "type": "registry:file",
+                    "target": "~/resources/js/components/ux/messages/flash-alert.tsx"
+                }
+            ]
         }
     ]
 }
