@@ -22,6 +22,7 @@ registry/
 ├── laravel/      Backend items (Laravel-only, plus -inertia / -livewire variants)
 ├── react/        React frontend items
 └── vue/          Vue frontend items
+skills/           Agent skills, installable with the skills CLI
 ```
 
 Inside each item folder, files mirror their install path in the consuming project.
@@ -242,6 +243,18 @@ pnpm dlx shadcn@latest add smonteromx/laravel-redistributed/icon-renderer-react
 ```
 
 `<IconRenderer />` (`resources/js/components/ux/typography/icon-renderer.tsx`) renders a lucide icon component reference — useful when the icon comes from a decoration record or other data.
+
+## Skills
+
+Agent skills live under `skills/` and install with the [skills CLI](https://skills.sh) into any supported coding agent:
+
+```bash
+pnpm dlx skills add smonteromx/laravel-redistributed
+```
+
+| Skill | Description |
+| --- | --- |
+| `laravel-postgres-schemas` | Configure PostgreSQL named schemas for Laravel's default tables: initial schemas migration, schema-qualified migrations, env-routed config, and model overrides — including hidden models like personal access tokens and notifications. |
 
 ## Requirements
 
