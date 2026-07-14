@@ -15,7 +15,18 @@ Every Laravel default table this skill manages, with the four surfaces to wire. 
 | `job_batches` | `0001_01_01_000002_create_jobs_table` | `queue.batching.table` | `DB_QUEUE_BATCHES_TABLE` | **no — create** | — |
 | `failed_jobs` | `0001_01_01_000002_create_jobs_table` | `queue.failed.table` | `DB_QUEUE_FAILED_TABLE` | **no — create** | — |
 
-Starter-kit tables (present only when chosen in `laravel new`): Jetstream-style `teams`, `team_user`, `team_invitations` ship with their own migrations and models (`Team`, `Membership`, `TeamInvitation`) — set `$table` on each. Two-factor packages add **columns** to `users`, not tables — nothing to do.
+## Starter-kit tables (Maestro)
+
+Starter kits are composed by `laravel/maestro`, the official starter orchestrator — features are chosen at `laravel new`, so each of these tables *might exist*: inventory the ones whose migrations are present and skip the rest. The authoritative current list is `kits/Shared/{kit}/database/migrations` in the [laravel/maestro](https://github.com/laravel/maestro/tree/main/kits/Shared) repo — consult it when a migration in the project doesn't match a row here.
+
+| Table | Kit | Default migration | Config key | Env var | Model |
+| --- | --- | --- | --- | --- | --- |
+| `passkeys` | Fortify | `2024_01_01_000000_create_passkeys_table` | — | — | Create `App\Models\Passkey extends Laravel\Passkeys\Passkey` with `$table`; register in a provider with `Passkeys::usePasskeyModel(Passkey::class)` |
+| `teams` | Teams | `2026_01_27_000001_create_teams_table` | — | — | `Team` → set `$table` |
+| `team_members` | Teams | same migration as `teams` | — | — | `Membership` (extends `Pivot`) → set `$table` |
+| `team_invitations` | Teams | same migration as `teams` | — | — | `TeamInvitation` → set `$table` |
+
+Column-only feature migrations (`add_two_factor_columns_to_users_table`, `add_current_team_id_to_users_table`) alter `users` and need nothing. The WorkOS kit replaces the users migration and creates only `users` and `sessions` — no `password_reset_tokens`, so that row drops out of the inventory.
 
 ## Late tables (published after the skeleton)
 
@@ -32,6 +43,15 @@ These are late only when user-owned migrations sit between them and the first wa
 | --- | --- | --- | --- | --- |
 | `migrations` table | `database.migrations.table` | `DB_MIGRATIONS_TABLE` | **no — create** | If moved to a custom schema, require `smonteromx/useful-artisan-commands` (dev): it detects `schema.table` notation and creates the schema before `migrate*` commands and test runs. Its schema is never part of the initial schemas migration — the migrator needs it before migrations run. |
 | pgsql `search_path` | `database.connections.pgsql.search_path` | `DB_SEARCH_PATH` | **no — create** | Must list every chosen schema plus `public`, comma-separated, so `migrate:fresh` / `db:wipe` can drop tables across schemas. |
+
+## Model relocation
+
+The project guidelines treat the schema as the domain and mirror it into `app/Models/{Domain}/` (domain-only, no subdomain nesting). For each model the user opted to relocate, the schema chosen for its table decides the path: move it to `app/Models/{Domain}/{Model}.php` with namespace `App\Models\{Domain}` (overrides created this run — `PersonalAccessToken`, `DatabaseNotification`, `Passkey` — are created there directly), then chase every reference:
+
+- Imports and FQCN strings across `app/`, `bootstrap/`, `config/`, `database/`, `routes/`, `tests/`.
+- `config/auth.php` → `providers.users.model` when `User` moves.
+- Factories: conventional discovery only resolves `App\Models\{Model}` — set `protected $model` on the factory or `newFactory()` on the model.
+- Registered overrides follow the new namespace: `Sanctum::usePersonalAccessTokenModel(...)`, `Passkeys::usePasskeyModel(...)`; `Passkeys::$userModel` defaults to `App\Models\User`, so call `Passkeys::useUserModel(...)` when `User` moves and passkeys are installed.
 
 ## Env block shape
 
