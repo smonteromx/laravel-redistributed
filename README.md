@@ -266,7 +266,7 @@ pnpm dlx skills add smonteromx/laravel-redistributed
 
 | Skill | Description |
 | --- | --- |
-| `laravel-postgres-schemas` | Configure PostgreSQL named schemas for Laravel's default tables: initial schemas migration, schema-qualified migrations, env-routed config, and model overrides — including hidden models like personal access tokens and notifications. |
+| `laravel-postgres-schemas` | Configure PostgreSQL named schemas for Laravel's default and Maestro starter-kit tables (passkeys, teams when present): initial schemas migration, schema-qualified migrations, env-routed config, model overrides — including hidden models like personal access tokens and notifications — and optional model relocation into `app/Models/{Domain}/`. |
 
 ## Requirements
 
