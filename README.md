@@ -33,7 +33,7 @@ Inside each item folder, files mirror their install path in the consuming projec
 
 | Item | Stack | Description | Installs to |
 | --- | --- | --- | --- |
-| `guidelines` | Cross-stack | Laravel Boost AI guidelines: project architecture, backend and frontend conventions, testing, and quality pipelines. | `.ai/guidelines/` |
+| `guidelines` | Cross-stack | Laravel Boost AI guidelines: project architecture, backend and frontend conventions, design workflows, testing, and quality pipelines. | `.ai/guidelines/` |
 | `feedback-inertia` | Laravel (Inertia) | Backend flash feedback: `Inertia::notify()` macro, `FlashResponse` and `EmphasisVariant` enums, and `AppException`. | `app/` |
 | `appearance-react` | Laravel + React | Light/dark/system theme handling: `HandleAppearance` middleware and the `useAppearance` hook. | `app/`, `resources/js/` |
 | `feedback-react` | React | Frontend flash feedback: `EmphasisVariant` mirror, `FlashResponse` type, emphasis decoration, `useFlashToast()`, and `FlashAlert`. | `resources/js/` |
