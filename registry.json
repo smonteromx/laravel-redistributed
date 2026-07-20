@@ -7,7 +7,7 @@
             "name": "guidelines",
             "type": "registry:item",
             "title": "Laravel AI Guidelines",
-            "description": "Laravel Boost AI guidelines covering project architecture, backend and frontend conventions, testing, and quality pipelines for Laravel + Inertia + React applications.",
+            "description": "Laravel Boost AI guidelines covering project architecture, backend and frontend conventions, design workflows, testing, and quality pipelines for Laravel + Inertia + React applications.",
             "files": [
                 {
                     "path": "registry/guidelines/project-architecture.md",
@@ -23,6 +23,11 @@
                     "path": "registry/guidelines/frontend-conventions.md",
                     "type": "registry:file",
                     "target": "~/.ai/guidelines/frontend-conventions.md"
+                },
+                {
+                    "path": "registry/guidelines/design.md",
+                    "type": "registry:file",
+                    "target": "~/.ai/guidelines/design.md"
                 },
                 {
                     "path": "registry/guidelines/testing.md",
