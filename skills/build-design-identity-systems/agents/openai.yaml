@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design and Identity Systems"
+  short_description: "Structure identity and design systems for developers"
+  default_prompt: "Use $build-design-identity-systems to structure a dev-friendly identity and design system for my product."

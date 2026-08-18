@@ -266,6 +266,7 @@ pnpm dlx skills add smonteromx/laravel-redistributed
 
 | Skill | Description |
 | --- | --- |
+| `build-design-identity-systems` | Structure dev-friendly identity systems, design systems, or both for Paper, Figma, Pencil, and other design platforms: product-derived mood and foundations, platform-native tokens, identity mark selection, documentation routing, and stack-agnostic handoff. |
 | `laravel-postgres-schemas` | Configure PostgreSQL named schemas for Laravel's default and Maestro starter-kit tables (passkeys, teams when present): initial schemas migration, schema-qualified migrations, env-routed config, model overrides — including hidden models like personal access tokens and notifications — and optional model relocation into `app/Models/{Domain}/`. |
 
 ## Requirements
