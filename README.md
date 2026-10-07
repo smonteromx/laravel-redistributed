@@ -267,6 +267,7 @@ pnpm dlx skills add smonteromx/laravel-redistributed
 | Skill | Description |
 | --- | --- |
 | `laravel-postgres-schemas` | Configure PostgreSQL named schemas for Laravel's default and Maestro starter-kit tables (passkeys, teams when present): initial schemas migration, schema-qualified migrations, env-routed config, model overrides — including hidden models like personal access tokens and notifications — and optional model relocation into `app/Models/{Domain}/`. |
+| `identity-and-design-systems` | Structure a visual identity system and/or design system on a design canvas (Paper, Figma, Pencil): intake (platform, scope, companion taste skill, decision records), direction exploration, mark architecture and brand assets, a four-role color token contract, product-derived foundations, native platform tokens, and a numbered board layout. Stack-agnostic beyond CSS, Tailwind and the icon family; includes a brand-only branch for ventures with no interface. |
 
 ## Requirements
 
