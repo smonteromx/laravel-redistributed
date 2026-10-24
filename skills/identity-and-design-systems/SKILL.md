@@ -47,7 +47,7 @@ Pages, in order:
   6. **Foundations**: the foundations step 4 kept, each scale's base step highlighted in primary.
   7. **Signature pattern**: only when the product has an interaction its category lacks; defined at full detail.
   8. **Rules**: every system rule in one place, grouped by dimension and phrased as what to do. A rule that only reads beside its example stays on that example's board.
-  9. **Delivery**: what implementation receives: naming, bases and derivations, aliases, whatever the platform could not store and where it lives instead, vocabulary rules, the asset list, open decisions.
+  9. **Delivery**: what implementation receives: naming, bases and derivations, the unit equivalences between canvas and code, aliases, whatever the platform could not store and where it lives instead, vocabulary rules, the asset list, open decisions. The token export is read from the store, so the board names that source in place of drawing the export.
 - **Brand assets**: production artwork: symbol, wordmark, custom glyphs, app icon and favicon, social cover, and an inventory board.
 
 Drop the boards outside scope and renumber. Applied components and screens come later, through the companion's workflow.
@@ -56,6 +56,7 @@ Canvas conventions:
 
 - The design file is the **source of truth** for visual values: a value changes there first, then in implementation, and every pair it touches is re-verified.
 - Print each swatch's value beneath it as `L C H`. Printed labels are static text: re-set them whenever a value changes.
+- Print sizes in the units implementation uses, with the canvas value in parentheses where the two differ: `4.5rem (72px)`, a leading as `calc(4.75 / 4.5) (76px)`.
 - Split a row that overflows into equal lanes and pad the short row with an empty lane, so columns stay aligned.
 - An undecided question goes on the canvas as a visible open-decision card, in the preventive tint.
 

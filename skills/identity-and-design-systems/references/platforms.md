@@ -23,9 +23,12 @@ Inspect the platform's tools or documentation to fill the map; an unknown capabi
 
 - Load `get_guide({ topic: "paper-mcp-instructions" })` once per session.
 - Token types: color, font family, font size, font weight, letter spacing, line height, spacing, radius, breakpoint, container, opacity. One value per token, no modes (use the `--color-dark-*` mirror). No shadow, duration or easing type; no double-dash names, so per-size pairs live on the typography board.
-- `get_tokens` exports the store as CSS or as a Tailwind v4 `@theme` block, which is the delivery format implementation reads.
+- `get_tokens` exports the store as CSS or as a Tailwind v4 `@theme` block, which is the delivery format implementation reads once sizes are converted back to rem.
 - `set_tokens` with a new name rewrites every reference.
-- The canvas previews rem poorly for type: a rem font size renders small and a rem line height distorts. Keep rem in token values and printed labels, render type specimens in px. `border-radius: var(--radius-*)` renders correctly; bind radii directly.
+- The canvas resolves `1rem` as 12px, so every rem token draws at 75% (type, spacing and radius alike) and a rem container token is dropped. Store every size token in px, at the value a 16px root gives, and open its description with the rem implementation uses; then bind specimens, swatches and mocks to the tokens. The delivery board states that implementation takes the rem, converting the exported px at px ÷ 16.
+- A rem or unitless line height turns into a rounded percentage of the font size (1.0556 at 72px draws 77px) and a `calc()` one collapses, so specimens draw line heights in px.
+- A family token holds the family name alone (`Geist Mono`); a fallback stack in the value renders the system font, so the stack implementation ships goes in the description.
+- A token whose value is a `calc()` collapses. Spacing steps the boards bind are their own px tokens (`--spacing-4`, half steps as `--spacing-1_5`), canvas-only: implementation derives every step from `--spacing`. A new step joins when a layout needs it, always as a multiple of the base.
 - Inline `flex: 1` from `write_html` is sometimes dropped; set `flexGrow` explicitly with `update_styles` and verify.
 - Re-read live nodes before rewriting a section; the user edits copy directly on the canvas.
 

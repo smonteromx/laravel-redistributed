@@ -8,7 +8,7 @@ Everything that is neither color nor a mark. A foundation enters the system only
 - **Tailwind namespaces and step names.** `--spacing`, `--radius-*`, `--text-*`, `--font-*`, `--font-weight-*`, `--tracking-*`, `--leading-*`, `--shadow-*`, `--ease-*`, `--breakpoint-*`, `--container-*`, and Tailwind's own step names (`--tracking-tight`, not `--tracking-heading`). A name outside the namespaces is a custom addition with a stated job (`--container-reading`, `--shadow-float`, `--duration-enter`).
 - **Overridable bases.** Each scale derives from one base where it can: `--spacing` multiplies every step; `--radius` yields the radius steps through `calc()`; each `--text-*` size carries its own line-height, letter-spacing and weight pairs. Moving a base is a system change, which is the point.
 - **Unused defaults switched off** (`--color-*: initial`, `--shadow-*: initial`, …) when the product wants its restraint to be a fact rather than a hope. Offer it; it is optional.
-- **Units.** Sizes (text, radius, spacing) in rem; tracking in em; leading unitless; shadow offsets in px. When the canvas previews rem poorly, the canvas mirrors the values in px and the conversion is exact.
+- **Units.** Sizes (text, radius, spacing) in rem; tracking in em; leading unitless; shadow offsets in px. When the canvas resolves rem against another root, its token store holds the values in px and each description carries the rem (see [platforms.md](platforms.md)).
 - **The base step is marked.** On the board, each scale's base or default step carries the primary color, so the eye finds it first.
 
 ## Typography
