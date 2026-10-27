@@ -56,7 +56,8 @@ Canvas conventions:
 
 - The design file is the **source of truth** for visual values: a value changes there first, then in implementation, and every pair it touches is re-verified.
 - Print each swatch's value beneath it as `L C H`. Printed labels are static text: re-set them whenever a value changes.
-- Print sizes in the units implementation uses, with the canvas value in parentheses where the two differ: `4.5rem (72px)`, a leading as `calc(4.75 / 4.5) (76px)`.
+- Print every size a board states (token, height, padding, width) in the units implementation uses, with the canvas value in parentheses where the two differ: `4.5rem (72px)`, a leading as `calc(4.75 / 4.5) (76px)`.
+- Bind each board's own layout (its text, gaps, padding and radii) to the store's tokens as well. Brand art and drawings at scale keep their px: their sizes are proportions of the drawing. A value only the boards need becomes a canvas-only step whose job opens with "Boards only"; a value the system already rounds to a neighbouring step rounds the same way on the boards.
 - Split a row that overflows into equal lanes and pad the short row with an empty lane, so columns stay aligned.
 - An undecided question goes on the canvas as a visible open-decision card, in the preventive tint.
 
